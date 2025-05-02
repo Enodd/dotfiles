@@ -1,5 +1,6 @@
 alias dcls="docker container ls"
 alias dclsa="docker container ls -a"
+alias ll="ls -la"
 
 ds() {
   docker start $1 > /dev/null
