@@ -1,6 +1,7 @@
 alias dcls="docker container ls"
 alias dclsa="docker container ls -a"
 alias ll="ls -la"
+unameOut="$(uname -s)"
 
 ds() {
   docker start $1 > /dev/null
@@ -11,11 +12,27 @@ dsp() {
 }
 
 update() {
-  brew update
-  brew upgrade
+  if [ $unameOut = "Linux"]; then
+    sudo pacman -Syu
+  else
+    brew update
+    brew upgrade
+  fi
 }
 
 alias dev="cd $HOME/Development/"
+
+if [ $unameOut = "Linux" ]; then
+  echo "Loading nvm for linux"
+  export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+else
+  echo "Loading nvm for macos"
+  export NVM_DIR="$HOME/.nvm"
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+fi
 
 autoload -U add-zsh-hook
 load-nvmrc() {
