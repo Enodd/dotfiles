@@ -1,6 +1,5 @@
-*
-!.gitignore
-!.config/nvm/*
-!.config/zsh/*
-!.zshrc
+.config/*
+
+!.config/nvm
+!.config/zsh
 
