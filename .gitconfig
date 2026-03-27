@@ -1,0 +1,24 @@
+[user]
+	name = Damian Nowak
+	email = enodd-dev@proton.me
+
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+	path = ~/.shell/git/gitconfig-github
+
+[includeIf "hasconfig:remote.*.url:https://github.com/*"]
+	path = ~/.shell/git/gitconfig-github
+
+[includeIf "hasconfig:remote.*.url:git@gitlab.com:*/**"]
+	path = ~/.shell/git/gitconfig-gitlab
+
+[includeIf "hasconfig:remote.*.url:https://gitlab.com/*"]
+	path = ~/.shell/git/gitconfig-gitlab
+
+[includeIf "hasconfig:remote.*.url:git@gitlab-p2.autobid.de:*/**"]
+	path = ~/.shell/git/gitconfig-contina
+
+[includeIf "hasconfig:remote.*.url:htts://gitlab-p2.autobid.de/*"]
+	path = ~/.shell/git/gitconfig-contina
+
+[init]
+  defaultBranch = master
